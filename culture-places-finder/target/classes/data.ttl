@@ -1,0 +1,119 @@
+PREFIX ex:   <http://example.org/schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+ex:name  rdf:type     owl:DatatypeProperty;
+        rdfs:comment  "The name of the heritage.";
+        rdfs:domain   ex:Heritage;
+        rdfs:label    "Name";
+        rdfs:range    xsd:string .
+
+ex:latitude  rdf:type  owl:DatatypeProperty;
+        rdfs:comment  "The latitude of the heritage location.";
+        rdfs:domain   ex:Heritage;
+        rdfs:label    "Latitude";
+        rdfs:range    xsd:double .
+
+ex:Heritage  rdf:type  owl:Class;
+        rdfs:comment  "A class representing various cultural heritages";
+        rdfs:label    "Cultural Heritage" .
+
+<http://example.org/user#user1234>
+        rdf:type                        <http://example.org/user#User>;
+        <http://example.org/user#email>
+                "john.doe@example.org";
+        <http://example.org/user#id>    "1234"^^xsd:long;
+        <http://example.org/user#name>  "John Doe";
+        <http://example.org/user#password>
+                "securepassword123";
+        <http://example.org/user#role>  "USER";
+        <http://example.org/user#username>
+                "johndoe" .
+
+<http://example.org/user#email>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "The user's email address.";
+        rdfs:domain   <http://example.org/user#User>;
+        rdfs:label    "Email";
+        rdfs:range    xsd:string .
+
+ex:id   rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "The unique identifier for a heritage.";
+        rdfs:domain   ex:Heritage;
+        rdfs:label    "ID";
+        rdfs:range    xsd:long .
+
+ex:heritage2  rdf:type  ex:Heritage;
+        ex:description  "An oval amphitheatre in the centre of Rome, Italy. Largest ancient amphitheatre ever built.";
+        ex:id           "2"^^xsd:long;
+        ex:latitude     "41.8902"^^xsd:double;
+        ex:longitude    "12.4922"^^xsd:double;
+        ex:name         "Colosseum" .
+
+<http://example.org/user#password>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "The user's password.";
+        rdfs:domain   <http://example.org/user#User>;
+        rdfs:label    "Password";
+        rdfs:range    xsd:string .
+
+ex:HeritageOntology  rdf:type  owl:Ontology;
+        owl:versionInfo  "1.0" .
+
+ex:description  rdf:type  owl:DatatypeProperty;
+        rdfs:comment  "A brief description of the heritage.";
+        rdfs:domain   ex:Heritage;
+        rdfs:label    "Description";
+        rdfs:range    xsd:string .
+
+<http://example.org/user#username>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "The user's unique username.";
+        rdfs:domain   <http://example.org/user#User>;
+        rdfs:label    "Username";
+        rdfs:range    xsd:string .
+
+<http://example.org/user#UserOntology>
+        rdf:type         owl:Ontology;
+        owl:versionInfo  "1.0" .
+
+ex:longitude  rdf:type  owl:DatatypeProperty;
+        rdfs:comment  "The longitude of the heritage location.";
+        rdfs:domain   ex:Heritage;
+        rdfs:label    "Longitude";
+        rdfs:range    xsd:double .
+
+<http://example.org/user#id>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "The unique identifier for a user.";
+        rdfs:domain   <http://example.org/user#User>;
+        rdfs:label    "ID";
+        rdfs:range    xsd:long .
+
+ex:heritage1  rdf:type  ex:Heritage;
+        ex:description  "A wrought-iron lattice tower on the Champ de Mars in Paris, named after engineer Gustave Eiffel.";
+        ex:id           "1"^^xsd:long;
+        ex:latitude     "48.8584"^^xsd:double;
+        ex:longitude    "2.2945"^^xsd:double;
+        ex:name         "Eiffel Tower" .
+
+<http://example.org/user#name>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "The user's full name.";
+        rdfs:domain   <http://example.org/user#User>;
+        rdfs:label    "Name";
+        rdfs:range    xsd:string .
+
+<http://example.org/user#User>
+        rdf:type      owl:Class;
+        rdfs:comment  "A class representing a user of a system.";
+        rdfs:label    "User" .
+
+<http://example.org/user#role>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "The role of the user in the system.";
+        rdfs:domain   <http://example.org/user#User>;
+        rdfs:label    "Role";
+        rdfs:range    xsd:string .

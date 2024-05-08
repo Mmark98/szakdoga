@@ -1,0 +1,7 @@
+SELECT ?heritage ?name ?latitude ?longitude WHERE {
+    ?heritage rdf:type :CulturalHeritage ;
+              :name ?name ;
+              :location ?location .
+    ?location :latitude ?latitude ;
+              :longitude ?longitude .
+}

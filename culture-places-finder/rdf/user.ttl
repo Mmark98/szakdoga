@@ -1,0 +1,60 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.org/user#> .
+
+# Ontológiai alapbeállítások
+ex:UserOntology rdf:type owl:Ontology ;
+                owl:versionInfo "1.0" .
+
+# Osztályok definíciója
+ex:User rdf:type owl:Class ;
+        rdfs:label "User" ;
+        rdfs:comment "A class representing a user of a system." .
+
+# Tulajdonságok definíciója
+ex:id rdf:type owl:DatatypeProperty ;
+      rdfs:domain ex:User ;
+      rdfs:range xsd:long ;
+      rdfs:label "ID" ;
+      rdfs:comment "The unique identifier for a user." .
+
+ex:name rdf:type owl:DatatypeProperty ;
+        rdfs:domain ex:User ;
+        rdfs:range xsd:string ;
+        rdfs:label "Name" ;
+        rdfs:comment "The user's full name." .
+
+ex:username rdf:type owl:DatatypeProperty ;
+            rdfs:domain ex:User ;
+            rdfs:range xsd:string ;
+            rdfs:label "Username" ;
+            rdfs:comment "The user's unique username." .
+
+ex:email rdf:type owl:DatatypeProperty ;
+         rdfs:domain ex:User ;
+         rdfs:range xsd:string ;
+         rdfs:label "Email" ;
+         rdfs:comment "The user's email address." .
+
+ex:password rdf:type owl:DatatypeProperty ;
+             rdfs:domain ex:User ;
+             rdfs:range xsd:string ;
+             rdfs:label "Password" ;
+             rdfs:comment "The user's password." .
+
+ex:role rdf:type owl:DatatypeProperty ;
+        rdfs:domain ex:User ;
+        rdfs:range xsd:string ;
+        rdfs:label "Role" ;
+        rdfs:comment "The role of the user in the system." .
+
+# Példa egy felhasználóra
+ex:user1234 rdf:type ex:User ;
+            ex:id "1234"^^xsd:long ;
+            ex:name "John Doe" ;
+            ex:username "johndoe" ;
+            ex:email "john.doe@example.org" ;
+            ex:password "securepassword123" ;
+            ex:role "USER" . 

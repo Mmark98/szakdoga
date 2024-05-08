@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "rdf.default.lang",
+    "type": "java.lang.String",
+    "description": "A description for 'rdf.default.lang'"
+  },
+  {
+    "name": "app.datasetUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'app.datasetUrl'"
+  },
+  {
+    "name": "spring.thymeleaf.templates.root",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.thymeleaf.templates.root'"
+  }
+]}

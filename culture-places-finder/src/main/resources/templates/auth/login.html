@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bejelentkezés</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+</head>
+<body class="text-center">
+    <div class="container">
+		
+        <!-- Sikeres üzenet megjelenítése, ha van -->
+        <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+        
+        <!-- Hibaüzenetek kezelése -->
+		<div th:if="${param.invalidEmail}" class="alert alert-danger">Az általad megadott e-mail cím formátuma érvénytelen. Kérjük, ellenőrizd, hogy helyesen írtad-e be, és próbáld újra.</div>
+		<div th:if="${param.invalidPassword}" class="alert alert-danger">A megadott jelszó nem egyezik meg a fiókhoz társított jelszóval. Kérjük, ellenőrizd, hogy helyesen írtad-e be, vagy használd a 'Jelszó elfelejtése' funkciót a jelszó visszaállításához.</div>
+
+        <!-- Bejelentkezési űrlap -->
+		<form action="/login" method="post">
+			<input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <h2 class="form-signin-heading">Bejelentkezés</h2>
+            
+            <label for="username" class="sr-only">Felhasználónév</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Felhasználónév" required autofocus>
+            
+            <label for="inputPassword" class="sr-only">Jelszó</label>
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Jelszó" required>
+			
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Bejelentkezés</button>
+        </form>
+        
+        <!-- Regisztrációs link -->
+        <a th:href="@{/registration}" class="btn btn-link">Regisztráció</a>
+		<a th:href="@{/heritages}" class="btn btn-link">Örökségek</a>
+    </div>
+</body>
+</html>

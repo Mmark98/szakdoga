@@ -1,0 +1,60 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.org/schema#> .
+
+# Ontológiai alapbeállítások
+ex:HeritageOntology rdf:type owl:Ontology ;
+                    owl:versionInfo "1.0" .
+
+# Osztályok definíciója
+ex:Heritage rdf:type owl:Class ;
+            rdfs:label "Cultural Heritage" ;
+            rdfs:comment "A class representing various cultural heritages" .
+
+# Tulajdonságok definíciója
+ex:id rdf:type owl:DatatypeProperty ;
+      rdfs:domain ex:Heritage ;
+      rdfs:range xsd:long ;
+      rdfs:label "ID" ;
+      rdfs:comment "The unique identifier for a heritage." .
+
+ex:name rdf:type owl:DatatypeProperty ;
+        rdfs:domain ex:Heritage ;
+        rdfs:range xsd:string ;
+        rdfs:label "Name" ;
+        rdfs:comment "The name of the heritage." .
+
+ex:description rdf:type owl:DatatypeProperty ;
+               rdfs:domain ex:Heritage ;
+               rdfs:range xsd:string ;
+               rdfs:label "Description" ;
+               rdfs:comment "A brief description of the heritage." .
+
+ex:latitude rdf:type owl:DatatypeProperty ;
+            rdfs:domain ex:Heritage ;
+            rdfs:range xsd:double ;
+            rdfs:label "Latitude" ;
+            rdfs:comment "The latitude of the heritage location." .
+
+ex:longitude rdf:type owl:DatatypeProperty ;
+             rdfs:domain ex:Heritage ;
+             rdfs:range xsd:double ;
+             rdfs:label "Longitude" ;
+             rdfs:comment "The longitude of the heritage location." .
+
+# Példa egy entitásra
+ex:heritage1 rdf:type ex:Heritage ;
+             ex:id "1"^^xsd:long ;
+             ex:name "Eiffel Tower" ;
+             ex:description "A wrought-iron lattice tower on the Champ de Mars in Paris, named after engineer Gustave Eiffel." ;
+             ex:latitude "48.8584"^^xsd:double ;
+             ex:longitude "2.2945"^^xsd:double .
+
+ex:heritage2 rdf:type ex:Heritage ;
+             ex:id "2"^^xsd:long ;
+             ex:name "Colosseum" ;
+             ex:description "An oval amphitheatre in the centre of Rome, Italy. Largest ancient amphitheatre ever built." ;
+             ex:latitude "41.8902"^^xsd:double ;
+             ex:longitude "12.4922"^^xsd:double .
