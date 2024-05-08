@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
+
 import com.example.cultureplacesfinder.model.Heritage;
 import com.example.cultureplacesfinder.service.HeritageService;
 
@@ -48,14 +50,23 @@ public class HeritageController {
 	    }
 	
 	 
+
 	 @PostMapping("/upload")
-	 public String processUpload(@ModelAttribute("heritages") Heritage heritage, BindingResult result, Model model) {
-	     if (result.hasErrors()) {
-	         return "upload";
-	     }
-	     // az 'heritage' adatainak feldolgozása
-	     return "redirect:/success";
+	 public RedirectView updateHeritage(
+	     @RequestParam String id,
+	     @RequestParam String name,
+	     @RequestParam String description,
+	     @RequestParam double latitude,
+	     @RequestParam double longitude) {
+
+	     heritageService.insertHeritageData(id, name, description, latitude, longitude);
+	     RedirectView redirectView = new RedirectView();
+	     redirectView.setUrl("/heritages");
+	     return redirectView;
 	 }
+
+	    
+	 
 
 	 
 	 

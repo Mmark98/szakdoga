@@ -24,24 +24,23 @@ public class HeritageService {
     
     // private JenaClient jenaClient;
     
-    public void addHeritage(Heritage heritage) {
+    public void insertHeritageData(String id, String name, String description, double latitude, double longitude) {
         String sparqlUpdate = String.format("""
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
-             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX ex: <http://example.org/schema#>
-            INSERT DATA { 
-              GRAPH <http://example.org/graph/heritages> { 
-                ex:heritage%d 
-                    rdf:type        ex:Heritage; 
+            INSERT DATA {
+              GRAPH <http://example.org/graph/heritages> {
+                ex:heritage%s
+                    rdf:type        ex:Heritage;
                     ex:name         "%s";
-                    ex:description  "%s"; 
-                    ex:id           "%d"^^xsd:long; 
-                    ex:latitude    "%f"^^xsd:double; 
-                    ex:longitude    "%f"^^xsd:double. 
-              } 
+                    ex:description  "%s";
+                    ex:id           "%s"^^xsd:long;
+                    ex:latitude     "%f"^^xsd:double;
+                    ex:longitude    "%f"^^xsd:double.
+              }
             }
-            """, heritage.getId(), heritage.getName(), heritage.getDescription(), heritage.getId(), heritage.getLatitude(), heritage.getLongitude());
-
+            """, id, name, description, id, latitude, longitude);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.valueOf("application/sparql-update"));
         HttpEntity<String> request = new HttpEntity<>(sparqlUpdate, headers);
